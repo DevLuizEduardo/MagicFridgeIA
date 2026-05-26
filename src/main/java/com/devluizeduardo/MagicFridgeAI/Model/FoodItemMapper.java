@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 public class FoodItemMapper {
     public FoodItem map(FoodItemDTO foodItemDTO){
         FoodItem foodItem = new FoodItem();
+        foodItem.setId(foodItemDTO.getId());
         foodItem.setNome(foodItemDTO.getNome());
         foodItem.setCategoria(foodItemDTO.getCategoria());
         foodItem.setQuantidade(foodItemDTO.getQuantidade());
@@ -18,6 +19,7 @@ public class FoodItemMapper {
 
     public FoodItemDTO map(FoodItem foodItem){
         FoodItemDTO foodItemDTO = new FoodItemDTO();
+        foodItemDTO.setId(foodItem.getId());
         foodItemDTO.setNome(foodItem.getNome());
         foodItemDTO.setCategoria(foodItem.getCategoria());
         foodItemDTO.setQuantidade(foodItem.getQuantidade());
