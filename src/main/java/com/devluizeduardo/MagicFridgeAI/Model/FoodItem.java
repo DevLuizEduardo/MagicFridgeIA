@@ -16,8 +16,12 @@ public class FoodItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nome;
+
     private FoodCategoria categoria;
+
     private Integer quantidade;
+
     private LocalDate validade;
 }
