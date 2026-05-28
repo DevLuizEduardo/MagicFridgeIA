@@ -62,7 +62,7 @@ public class FoodItemController {
     }
 
     @DeleteMapping("deletar/{id}")
-    public ResponseEntity<String> deletarItem(Long id){
+    public ResponseEntity<String> deletarItem(@PathVariable Long id){
         if(foodItemService.listarItemPorId(id)!=null){
             foodItemService.deletarItem(id);
             return ResponseEntity.ok("Item deletado com sucesso!!!");
