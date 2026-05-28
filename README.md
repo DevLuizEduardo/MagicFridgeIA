@@ -1,4 +1,5 @@
 # 🧊 MagicFridgeIA
+### Gere receitas inteligentes com IA usando ingredientes da sua geladeira
 
 API inteligente desenvolvida com Java e Spring Boot que gera sugestões de receitas com base nos alimentos cadastrados na geladeira do usuário utilizando integração com IA.
 
