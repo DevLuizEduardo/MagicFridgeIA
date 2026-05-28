@@ -1,5 +1,7 @@
 package com.devluizeduardo.MagicFridgeAI.Service;
 
+import com.devluizeduardo.MagicFridgeAI.Model.FoodItem;
+import com.devluizeduardo.MagicFridgeAI.Model.FoodItemDTO;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
@@ -8,6 +10,7 @@ import reactor.core.publisher.Mono;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class GeminiService {
@@ -21,9 +24,13 @@ public class GeminiService {
 
 
 
-public Mono<String> generateRecipe(){
-        String prompt="Me sugira uma receita simples com ingredientes comuns" +
-                "Reponda em formato Json ";
+public Mono<String> generateRecipe(List<FoodItemDTO> foodItemsDto){
+
+        String alimentos = foodItemsDto.stream()
+                .map(item ->String.format("%s (%s) - Quantidade: %d, Validade: %s",
+                        item.getNome(),item.getCategoria(),item.getQuantidade(),item.getValidade()))
+                .collect(Collectors.joining("\n"));
+        String prompt="Baseado no meu banco de dados faça uma receita com os seguintes itens: \n " + alimentos;
 
     Map<String,Object>requestBody = Map.of(
             "contents",List.of(Map.of("parts",
